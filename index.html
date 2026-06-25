@@ -7,182 +7,159 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #ffffff;
-      --bg-secondary: #f5f4f0;
-      --text: #1a1a1a;
-      --text-secondary: #666660;
-      --border: rgba(0,0,0,0.12);
-      --border-md: rgba(0,0,0,0.2);
-      --radius-md: 8px;
-      --radius-lg: 12px;
-      --radius-xl: 16px;
-      --purple-bg: #EEEDFE;
-      --purple-text: #3C3489;
-      --purple-border: #AFA9EC;
+      --bg: #ffffff; --bg-secondary: #f5f4f0; --text: #1a1a1a; --text-secondary: #666660;
+      --border: rgba(0,0,0,0.12); --border-md: rgba(0,0,0,0.2);
+      --radius-lg: 12px; --radius-xl: 16px;
+      --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #AFA9EC;
     }
-
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #1a1a1a;
-        --bg-secondary: #242424;
-        --text: #f0eeea;
-        --text-secondary: #999890;
-        --border: rgba(255,255,255,0.12);
-        --border-md: rgba(255,255,255,0.2);
-        --purple-bg: #26215C;
-        --purple-text: #CECBF6;
-        --purple-border: #534AB7;
+        --bg: #1a1a1a; --bg-secondary: #242424; --text: #f0eeea; --text-secondary: #999890;
+        --border: rgba(255,255,255,0.12); --border-md: rgba(255,255,255,0.2);
+        --purple-bg: #26215C; --purple-text: #CECBF6; --purple-border: #534AB7;
       }
     }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg-secondary);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 2rem 1rem;
-    }
-
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg-secondary); color: var(--text); min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 2rem 1rem; }
     .app { width: 100%; max-width: 600px; }
-
-    .lang-toggle { display: flex; gap: 8px; justify-content: flex-end; margin-bottom: 1.5rem; }
-
-    .lang-btn {
-      font-size: 12px; padding: 5px 12px; border-radius: 6px;
-      border: 0.5px solid var(--border-md);
-      background: var(--bg); color: var(--text-secondary); cursor: pointer; transition: all 0.15s;
-    }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .lang-toggle { display: flex; gap: 8px; }
+    .lang-btn { font-size: 12px; padding: 5px 12px; border-radius: 6px; border: 0.5px solid var(--border-md); background: var(--bg); color: var(--text-secondary); cursor: pointer; transition: all 0.15s; }
     .lang-btn.active { background: var(--purple-bg); color: var(--purple-text); border-color: var(--purple-border); }
-
     .header { text-align: center; margin-bottom: 2rem; }
     .header h1 { font-size: 28px; font-weight: 600; color: var(--text); margin-bottom: 8px; letter-spacing: -0.5px; }
     .header p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
-
-    .card {
-      background: var(--bg); border: 0.5px solid var(--border);
-      border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1rem;
-    }
-
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 12px; color: var(--text-secondary); font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
     .input-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; display: block; }
-
-    textarea {
-      width: 100%; min-height: 100px; padding: 12px 14px;
-      border: 0.5px solid var(--border-md); border-radius: var(--radius-lg);
-      font-size: 15px; font-family: inherit; color: var(--text);
-      background: var(--bg-secondary); resize: none; outline: none; transition: border-color 0.15s; line-height: 1.6;
-    }
+    textarea { width: 100%; min-height: 100px; padding: 12px 14px; border: 0.5px solid var(--border-md); border-radius: var(--radius-lg); font-size: 15px; font-family: inherit; color: var(--text); background: var(--bg-secondary); resize: none; outline: none; transition: border-color 0.15s; line-height: 1.6; }
     textarea:focus { border-color: var(--purple-border); }
-
     .chips-label { font-size: 13px; color: var(--text-secondary); margin: 1rem 0 8px; display: block; }
-
     .mood-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-
-    .chip {
-      padding: 7px 16px; border-radius: 999px; border: 0.5px solid var(--border-md);
-      font-size: 13px; cursor: pointer; background: var(--bg); color: var(--text-secondary); transition: all 0.15s; user-select: none;
-    }
+    .chip { padding: 7px 16px; border-radius: 999px; border: 0.5px solid var(--border-md); font-size: 13px; cursor: pointer; background: var(--bg); color: var(--text-secondary); transition: all 0.15s; user-select: none; }
     .chip:hover { background: var(--bg-secondary); color: var(--text); }
     .chip.active { background: var(--purple-bg); border-color: var(--purple-border); color: var(--purple-text); }
-
-    .submit-btn {
-      width: 100%; padding: 14px; background: var(--bg);
-      border: 0.5px solid var(--border-md); border-radius: var(--radius-lg);
-      font-size: 15px; font-weight: 500; color: var(--text); cursor: pointer; transition: all 0.15s; margin-top: 1rem;
-    }
-    .submit-btn:hover:not(:disabled) { background: var(--bg-secondary); }
-    .submit-btn:active:not(:disabled) { transform: scale(0.98); }
-    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
+    .genre-section { margin-top: 1rem; }
+    .genre-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 8px; }
+    .genre-btn { padding: 8px 4px; border-radius: var(--radius-lg); border: 0.5px solid var(--border-md); font-size: 12px; cursor: pointer; background: var(--bg); color: var(--text-secondary); transition: all 0.15s; text-align: center; line-height: 1.4; }
+    .genre-btn:hover { background: var(--bg-secondary); }
+    .genre-btn.active { background: var(--purple-bg); border-color: var(--purple-border); color: var(--purple-text); }
+    .btn-row { display: flex; gap: 8px; margin-top: 1rem; }
+    .submit-btn { flex: 1; padding: 14px; background: var(--bg); border: 0.5px solid var(--border-md); border-radius: var(--radius-lg); font-size: 15px; font-weight: 500; color: var(--text); cursor: pointer; transition: all 0.15s; }
+    .random-btn { padding: 14px 18px; background: var(--bg); border: 0.5px solid var(--border-md); border-radius: var(--radius-lg); font-size: 15px; color: var(--text-secondary); cursor: pointer; transition: all 0.15s; }
+    .submit-btn:hover:not(:disabled), .random-btn:hover:not(:disabled) { background: var(--bg-secondary); }
+    .submit-btn:disabled, .random-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     .result-section { display: none; margin-top: 0.5rem; }
-
-    .mood-badge {
-      display: inline-block; padding: 5px 16px; border-radius: 999px;
-      font-size: 14px; font-weight: 500;
-      background: var(--purple-bg); color: var(--purple-text); margin-bottom: 12px;
-    }
-
+    .mood-badge { display: inline-block; padding: 5px 16px; border-radius: 999px; font-size: 14px; font-weight: 500; background: var(--purple-bg); color: var(--purple-text); margin-bottom: 12px; }
     .message-text { font-size: 15px; color: var(--text); line-height: 1.8; }
-
-    .card h3 {
-      font-size: 12px; color: var(--text-secondary); font-weight: 400;
-      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px;
-    }
-
-    .playlist-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 10px 0; border-bottom: 0.5px solid var(--border);
-    }
+    .playlist-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
     .playlist-item:last-child { border-bottom: none; padding-bottom: 0; }
-
     .platform-badge { font-size: 11px; padding: 3px 9px; border-radius: 4px; font-weight: 500; flex-shrink: 0; }
     .yt { background: #FAECE7; color: #993C1D; }
     .sp { background: #EAF3DE; color: #27500A; }
-
-    @media (prefers-color-scheme: dark) {
-      .yt { background: #4A1B0C; color: #F5C4B3; }
-      .sp { background: #173404; color: #C0DD97; }
-    }
-
+    @media (prefers-color-scheme: dark) { .yt { background: #4A1B0C; color: #F5C4B3; } .sp { background: #173404; color: #C0DD97; } }
     .playlist-title { font-size: 14px; color: var(--text); flex: 1; line-height: 1.4; }
-
-    .playlist-link {
-      font-size: 13px; color: var(--purple-text); text-decoration: none;
-      flex-shrink: 0; display: flex; align-items: center; gap: 4px;
-    }
+    .playlist-link { font-size: 13px; color: var(--purple-text); text-decoration: none; flex-shrink: 0; display: flex; align-items: center; gap: 4px; }
     .playlist-link:hover { text-decoration: underline; }
-
     .loading-dots { display: flex; gap: 6px; justify-content: center; padding: 2rem; }
     .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-md); animation: bounce 1.2s infinite; }
     .dot:nth-child(2) { animation-delay: 0.2s; }
     .dot:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes bounce {
-      0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
-      40% { transform: translateY(-8px); opacity: 1; }
-    }
-
+    @keyframes bounce { 0%, 80%, 100% { transform: translateY(0); opacity: 0.5; } 40% { transform: translateY(-8px); opacity: 1; } }
     .error-msg { font-size: 14px; color: #993C1D; text-align: center; padding: 1rem; }
+    .history-empty { font-size: 14px; color: var(--text-secondary); text-align: center; padding: 1.5rem 0; }
+    .history-item { padding: 12px 0; border-bottom: 0.5px solid var(--border); cursor: pointer; transition: opacity 0.15s; }
+    .history-item:last-child { border-bottom: none; }
+    .history-item:hover { opacity: 0.7; }
+    .history-top { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .history-mood { font-size: 12px; padding: 2px 10px; border-radius: 999px; background: var(--purple-bg); color: var(--purple-text); font-weight: 500; }
+    .history-date { font-size: 12px; color: var(--text-secondary); margin-left: auto; }
+    .history-input { font-size: 13px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .history-clear { font-size: 12px; color: var(--text-secondary); background: none; border: none; cursor: pointer; padding: 0; float: right; }
+    .history-clear:hover { color: #993C1D; }
+    .tabs { display: flex; gap: 4px; margin-bottom: 1rem; }
+    .tab-btn { flex: 1; padding: 8px; border-radius: var(--radius-lg); border: 0.5px solid var(--border-md); font-size: 13px; cursor: pointer; background: var(--bg); color: var(--text-secondary); transition: all 0.15s; }
+    .tab-btn.active { background: var(--purple-bg); color: var(--purple-text); border-color: var(--purple-border); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
     .footer { text-align: center; margin-top: 2rem; font-size: 12px; color: var(--text-secondary); }
   </style>
 </head>
 <body>
 <div class="app">
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('ko')" id="btn-ko">한국어</button>
-    <button class="lang-btn" onclick="setLang('en')" id="btn-en">English</button>
-  </div>
-
-  <div class="header">
-    <h1>🎵 Moodtune</h1>
-    <p id="subtitle-text">지금 기분을 알려주세요.<br>어울리는 음악을 찾아드릴게요.</p>
-  </div>
-
-  <div class="card">
-    <span class="input-label" id="input-label">오늘 어떤 하루였나요?</span>
-    <textarea id="mood-input" placeholder="예) 오늘 너무 힘들었어, 그냥 쉬고 싶다..."></textarea>
-    <span class="chips-label" id="chips-label">또는 감정 태그를 골라보세요</span>
-    <div class="mood-chips" id="mood-chips">
-      <div class="chip" onclick="toggleChip(this)" data-ko="설레는" data-en="Excited">설레는</div>
-      <div class="chip" onclick="toggleChip(this)" data-ko="우울한" data-en="Down">우울한</div>
-      <div class="chip" onclick="toggleChip(this)" data-ko="신나는" data-en="Energetic">신나는</div>
-      <div class="chip" onclick="toggleChip(this)" data-ko="차분한" data-en="Calm">차분한</div>
-      <div class="chip" onclick="toggleChip(this)" data-ko="그리운" data-en="Nostalgic">그리운</div>
-      <div class="chip" onclick="toggleChip(this)" data-ko="지친" data-en="Tired">지친</div>
-      <div class="chip" onclick="toggleChip(this)" data-ko="행복한" data-en="Happy">행복한</div>
-      <div class="chip" onclick="toggleChip(this)" data-ko="불안한" data-en="Anxious">불안한</div>
+  <div class="top-bar">
+    <div class="tabs" style="margin-bottom:0; flex:1; margin-right:12px;">
+      <button class="tab-btn active" onclick="switchTab('main')" id="tab-main" data-ko="추천" data-en="Recommend">추천</button>
+      <button class="tab-btn" onclick="switchTab('history')" id="tab-history" data-ko="기록" data-en="History">기록</button>
     </div>
-    <button class="submit-btn" id="submit-btn" onclick="analyze()">
-      <span id="btn-text">음악 찾아주기 ↗</span>
-    </button>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('ko')" id="btn-ko">한국어</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">English</button>
+    </div>
   </div>
 
-  <div class="result-section" id="result-section">
-    <div class="card" id="message-card"></div>
-    <div class="card" id="playlist-card"></div>
+  <!-- 메인 탭 -->
+  <div class="tab-content active" id="tab-content-main">
+    <div class="header">
+      <h1>🎵 Moodtune</h1>
+      <p id="subtitle-text">지금 기분을 알려주세요.<br>어울리는 음악을 찾아드릴게요.</p>
+    </div>
+
+    <div class="card">
+      <span class="input-label" id="input-label">오늘 어떤 하루였나요?</span>
+      <textarea id="mood-input" placeholder="예) 오늘 너무 힘들었어, 그냥 쉬고 싶다..."></textarea>
+
+      <span class="chips-label" id="chips-label">또는 감정 태그를 골라보세요</span>
+      <div class="mood-chips">
+        <div class="chip" onclick="toggleChip(this)" data-ko="설레는" data-en="Excited">설레는</div>
+        <div class="chip" onclick="toggleChip(this)" data-ko="우울한" data-en="Down">우울한</div>
+        <div class="chip" onclick="toggleChip(this)" data-ko="신나는" data-en="Energetic">신나는</div>
+        <div class="chip" onclick="toggleChip(this)" data-ko="차분한" data-en="Calm">차분한</div>
+        <div class="chip" onclick="toggleChip(this)" data-ko="그리운" data-en="Nostalgic">그리운</div>
+        <div class="chip" onclick="toggleChip(this)" data-ko="지친" data-en="Tired">지친</div>
+        <div class="chip" onclick="toggleChip(this)" data-ko="행복한" data-en="Happy">행복한</div>
+        <div class="chip" onclick="toggleChip(this)" data-ko="불안한" data-en="Anxious">불안한</div>
+      </div>
+
+      <div class="genre-section">
+        <span class="chips-label" id="genre-label">선호 장르 (선택)</span>
+        <div class="genre-grid" id="genre-grid">
+          <button class="genre-btn" onclick="toggleGenre(this)" data-ko="K-pop" data-en="K-pop">🎤 K-pop</button>
+          <button class="genre-btn" onclick="toggleGenre(this)" data-ko="인디/팝" data-en="Indie/Pop">🎸 인디/팝</button>
+          <button class="genre-btn" onclick="toggleGenre(this)" data-ko="재즈" data-en="Jazz">🎷 재즈</button>
+          <button class="genre-btn" onclick="toggleGenre(this)" data-ko="클래식" data-en="Classical">🎻 클래식</button>
+          <button class="genre-btn" onclick="toggleGenre(this)" data-ko="Lo-fi" data-en="Lo-fi">☁️ Lo-fi</button>
+          <button class="genre-btn" onclick="toggleGenre(this)" data-ko="힙합" data-en="Hip-hop">🎧 힙합</button>
+          <button class="genre-btn" onclick="toggleGenre(this)" data-ko="R&B" data-en="R&B">✨ R&B</button>
+          <button class="genre-btn" onclick="toggleGenre(this)" data-ko="OST" data-en="OST">🎬 OST</button>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="submit-btn" id="submit-btn" onclick="analyze(false)">
+          <span id="btn-text">음악 찾아주기 ↗</span>
+        </button>
+        <button class="random-btn" id="random-btn" onclick="analyze(true)" title="랜덤 추천">
+          🎲
+        </button>
+      </div>
+    </div>
+
+    <div class="result-section" id="result-section">
+      <div class="card" id="message-card"></div>
+      <div class="card" id="playlist-card"></div>
+    </div>
+  </div>
+
+  <!-- 기록 탭 -->
+  <div class="tab-content" id="tab-content-history">
+    <div class="card">
+      <h3 id="history-title-label" style="display:flex; justify-content:space-between; align-items:center;">
+        <span id="history-label-text">감정 기록</span>
+        <button class="history-clear" onclick="clearHistory()" id="clear-btn">전체 삭제</button>
+      </h3>
+      <div id="history-list"></div>
+    </div>
   </div>
 
   <div class="footer">Moodtune · AI 음악 추천 Agent</div>
@@ -190,6 +167,7 @@
 
 <script>
   let currentLang = 'ko';
+  let selectedGenre = null;
 
   const i18n = {
     ko: {
@@ -197,26 +175,40 @@
       inputLabel: '오늘 어떤 하루였나요?',
       placeholder: '예) 오늘 너무 힘들었어, 그냥 쉬고 싶다...',
       chipsLabel: '또는 감정 태그를 골라보세요',
+      genreLabel: '선호 장르 (선택)',
       btnText: '음악 찾아주기 ↗',
       btnLoading: '분석 중...',
+      randomLoading: '랜덤 추천 중...',
       messageLabel: '공감 메시지',
       playlistLabel: '추천 플레이리스트',
       errorEmpty: '기분을 입력하거나 감정 태그를 선택해주세요.',
       errorApi: '잠시 오류가 발생했어요. 다시 시도해주세요.',
       listenBtn: '듣기',
+      historyEmpty: '아직 감정 기록이 없어요.\n음악을 추천받으면 자동으로 저장돼요 🎵',
+      clearBtn: '전체 삭제',
+      historyLabel: '감정 기록',
+      tabMain: '추천',
+      tabHistory: '기록',
     },
     en: {
       subtitle: 'Tell me how you feel.<br>I\'ll find the perfect music for you.',
       inputLabel: 'How was your day?',
       placeholder: 'e.g. I\'m exhausted and just want to rest...',
       chipsLabel: 'Or pick an emotion tag',
+      genreLabel: 'Preferred genre (optional)',
       btnText: 'Find my music ↗',
       btnLoading: 'Analyzing...',
+      randomLoading: 'Surprising you...',
       messageLabel: 'Empathy message',
       playlistLabel: 'Recommended playlists',
       errorEmpty: 'Please enter your mood or select a tag.',
       errorApi: 'Something went wrong. Please try again.',
       listenBtn: 'Listen',
+      historyEmpty: 'No history yet.\nYour mood records will appear here 🎵',
+      clearBtn: 'Clear all',
+      historyLabel: 'Mood History',
+      tabMain: 'Recommend',
+      tabHistory: 'History',
     }
   };
 
@@ -229,24 +221,137 @@
     document.getElementById('input-label').textContent = t.inputLabel;
     document.getElementById('mood-input').placeholder = t.placeholder;
     document.getElementById('chips-label').textContent = t.chipsLabel;
+    document.getElementById('genre-label').textContent = t.genreLabel;
     document.getElementById('btn-text').textContent = t.btnText;
+    document.getElementById('clear-btn').textContent = t.clearBtn;
+    document.getElementById('history-label-text').textContent = t.historyLabel;
+    document.getElementById('tab-main').textContent = t.tabMain;
+    document.getElementById('tab-history').textContent = t.tabHistory;
     document.querySelectorAll('.chip').forEach(c => { c.textContent = c.dataset[lang]; });
-    document.getElementById('result-section').style.display = 'none';
+    document.querySelectorAll('.genre-btn').forEach(b => {
+      const emoji = b.textContent.split(' ')[0];
+      b.textContent = emoji + ' ' + b.dataset[lang];
+    });
+    renderHistory();
+  }
+
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-content-' + tab).classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+    if (tab === 'history') renderHistory();
   }
 
   function toggleChip(el) { el.classList.toggle('active'); }
 
-  async function analyze() {
-    const input = document.getElementById('mood-input').value.trim();
-    const chips = [...document.querySelectorAll('.chip.active')].map(c => c.dataset[currentLang]);
-    const combined = [input, ...chips].filter(Boolean).join(', ');
-    const t = i18n[currentLang];
+  function toggleGenre(el) {
+    if (el.classList.contains('active')) {
+      el.classList.remove('active');
+      selectedGenre = null;
+    } else {
+      document.querySelectorAll('.genre-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      selectedGenre = el.dataset[currentLang];
+    }
+  }
 
-    if (!combined) { alert(t.errorEmpty); return; }
+  // 히스토리 관리
+  function getHistory() {
+    try { return JSON.parse(localStorage.getItem('moodtune_history') || '[]'); } catch { return []; }
+  }
+
+  function saveToHistory(moodInput, result) {
+    const history = getHistory();
+    history.unshift({
+      id: Date.now(),
+      input: moodInput,
+      mood: result.mood,
+      message: result.message,
+      playlists: result.playlists,
+      date: new Date().toLocaleDateString(currentLang === 'ko' ? 'ko-KR' : 'en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+    });
+    if (history.length > 30) history.pop();
+    localStorage.setItem('moodtune_history', JSON.stringify(history));
+  }
+
+  function renderHistory() {
+    const t = i18n[currentLang];
+    const history = getHistory();
+    const container = document.getElementById('history-list');
+    if (history.length === 0) {
+      container.innerHTML = `<p class="history-empty">${t.historyEmpty}</p>`;
+      return;
+    }
+    container.innerHTML = history.map(item => `
+      <div class="history-item" onclick="loadHistory(${item.id})">
+        <div class="history-top">
+          <span class="history-mood">${item.mood}</span>
+          <span class="history-date">${item.date}</span>
+        </div>
+        <div class="history-input">${item.input || '-'}</div>
+      </div>
+    `).join('');
+  }
+
+  function loadHistory(id) {
+    const history = getHistory();
+    const item = history.find(h => h.id === id);
+    if (!item) return;
+    switchTab('main');
+    const t = i18n[currentLang];
+    document.getElementById('result-section').style.display = 'block';
+    document.getElementById('message-card').innerHTML = `
+      <h3>${t.messageLabel}</h3>
+      <div class="mood-badge">${item.mood}</div>
+      <p class="message-text">${item.message}</p>
+    `;
+    document.getElementById('playlist-card').innerHTML = `
+      <h3>${t.playlistLabel}</h3>
+      ${item.playlists.map(p => `
+        <div class="playlist-item">
+          <span class="platform-badge ${p.platform === 'youtube' ? 'yt' : 'sp'}">${p.platform === 'youtube' ? 'YouTube' : 'Spotify'}</span>
+          <span class="playlist-title">${p.title}</span>
+          <a class="playlist-link" href="${p.url}" target="_blank" rel="noopener">${t.listenBtn} <i class="ti ti-external-link" style="font-size:14px"></i></a>
+        </div>
+      `).join('')}
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function clearHistory() {
+    if (confirm(currentLang === 'ko' ? '기록을 모두 삭제할까요?' : 'Clear all history?')) {
+      localStorage.removeItem('moodtune_history');
+      renderHistory();
+    }
+  }
+
+  const randomMoods = {
+    ko: ['설레는', '우울한', '신나는', '차분한', '그리운', '지친', '행복한', '불안한', '몽환적인', '따뜻한'],
+    en: ['Excited', 'Melancholic', 'Energetic', 'Calm', 'Nostalgic', 'Tired', 'Happy', 'Anxious', 'Dreamy', 'Warm']
+  };
+
+  async function analyze(isRandom = false) {
+    const t = i18n[currentLang];
+    let combined;
+
+    if (isRandom) {
+      const moods = randomMoods[currentLang];
+      combined = moods[Math.floor(Math.random() * moods.length)];
+    } else {
+      const input = document.getElementById('mood-input').value.trim();
+      const chips = [...document.querySelectorAll('.chip.active')].map(c => c.dataset[currentLang]);
+      combined = [input, ...chips].filter(Boolean).join(', ');
+      if (!combined) { alert(t.errorEmpty); return; }
+    }
+
+    if (selectedGenre) combined += ` (장르 선호: ${selectedGenre})`;
 
     const btn = document.getElementById('submit-btn');
-    document.getElementById('btn-text').textContent = t.btnLoading;
+    const randomBtn = document.getElementById('random-btn');
+    document.getElementById('btn-text').textContent = isRandom ? t.randomLoading : t.btnLoading;
     btn.disabled = true;
+    randomBtn.disabled = true;
 
     const resultSection = document.getElementById('result-section');
     resultSection.style.display = 'block';
@@ -262,34 +367,30 @@
       });
 
       const result = await response.json();
+      saveToHistory(isRandom ? combined : document.getElementById('mood-input').value.trim(), result);
 
       document.getElementById('message-card').innerHTML = `
         <h3>${t.messageLabel}</h3>
         <div class="mood-badge">${result.mood}</div>
         <p class="message-text">${result.message}</p>
       `;
-
       document.getElementById('playlist-card').innerHTML = `
         <h3>${t.playlistLabel}</h3>
         ${result.playlists.map(p => `
           <div class="playlist-item">
-            <span class="platform-badge ${p.platform === 'youtube' ? 'yt' : 'sp'}">
-              ${p.platform === 'youtube' ? 'YouTube' : 'Spotify'}
-            </span>
+            <span class="platform-badge ${p.platform === 'youtube' ? 'yt' : 'sp'}">${p.platform === 'youtube' ? 'YouTube' : 'Spotify'}</span>
             <span class="playlist-title">${p.title}</span>
-            <a class="playlist-link" href="${p.url}" target="_blank" rel="noopener">
-              ${t.listenBtn} <i class="ti ti-external-link" style="font-size:14px"></i>
-            </a>
+            <a class="playlist-link" href="${p.url}" target="_blank" rel="noopener">${t.listenBtn} <i class="ti ti-external-link" style="font-size:14px"></i></a>
           </div>
         `).join('')}
       `;
-
     } catch (e) {
       document.getElementById('message-card').innerHTML = `<p class="error-msg">${t.errorApi}</p>`;
       document.getElementById('playlist-card').innerHTML = '';
     }
 
     btn.disabled = false;
+    randomBtn.disabled = false;
     document.getElementById('btn-text').textContent = t.btnText;
   }
 </script>
